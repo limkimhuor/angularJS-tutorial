@@ -37,14 +37,15 @@
         <em class="pull-right">{{product.price | currency}}</em>
       </h3>
       <!-- Image Gallery  -->
-      <section ng-show="product.images.length">
+      <!-- <section ng-show="product.images.length">
         <img ng-src="{{product.images[gallery.current]}}" />
         <ul class="list-inline thumbs">
           <li class="thumbnail" ng-repeat="image in product.images">
             <img ng-src="{{image}}" />
           </li>
         </ul>
-      </section>
+      </section> -->
+      <product-gallery></product-gallery>
 
       <!-- Product Tabs -->
       <section class="tab" ng-controller="TabController as tab">
@@ -56,14 +57,14 @@
           <li ng-class="{ active: tab.isSet(3) }">
             <a href ng-click="tab.setTab(3)">Reviews</a></li>
         </ul>
-        <div ng-show="tab.isSet(1)">
-          <h4>Description</h4>
-          <blockquote>{{product.description}}</blockquote>
-        </div>
-        <div ng-show="tab.isSet(2)">
+        <!-- <div ng-show="tab.isSet(1)" ng-include="'product-description.html'">
+          </div> -->
+        <product-description ng-show="tab.isSet(1)"></product-description>
+        <!-- <div ng-show="tab.isSet(2)">
           <h4>Specs</h4>
           <blockquote>Shine: {{product.shine}}</blockquote>
-        </div>
+        </div> -->
+        <div ng-show="tab.isSet(2)" product-specs> </div>
         <!--  Review Tab's Content  -->
         <div ng-show="tab.isSet(3)">
           <!--  Product Reviews List -->
